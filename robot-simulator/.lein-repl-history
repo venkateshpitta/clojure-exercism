@@ -1,0 +1,26 @@
+(rest "Venkatesh")
+(rest (rest "Venkatesh"))
+(first "Santhi")
+(require 'robot-simulator)
+(def robbie (robot-simulator/robot {:x -2 :y 1} :east))
+robbie
+(robbie :bearing)
+(:bearing robbie)
+(:reload 'robot-simulator)
+(def robbie (robot-simulator/robot {:x -2 :y 1} :east))
+(require 'robot-simulator)
+(def robbie (robot-simulator/robot {:x -2 :y 1} :east))
+(robot-simulator/move-one-step robbie)
+(robbie :coordinates)
+(robbie :bearing)
+((robbie :coordinates) :x)
+(robbie :bearing)
+(condp = (robbie :bearing)
+:east 1
+:west 2
+:south 3
+:north 4)
+(require 'robot-simulator)
+(def robbie (robot-simulator/robot {:x -2 :y 1} :east))
+(robot-simulator/move-one-step robbie)
+(robot-simulator/move-one-step (robot-simulator/turn-right robbie))
