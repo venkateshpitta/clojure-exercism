@@ -1,0 +1,30 @@
+(doc agent)
+(def acnt (agent {:status :active :balance 0})
+)
+acnt
+(@acnt :status)
+(@acnt :balance)
+(send acnt [:balance] + 100)
+@acnt
+acnt
+(send acnt update-in [:balance] + 100)
+@acnt
+(send acnt update-in [:balance] + 100)
+(send @acnt update-in [:balance] + 100)
+(send acnt update-in [:balance] + 100)
+(doc update-in)
+(send acnt update-in [:balance] + 1)
+(send acnt + 100)
+(send acnt [:balance] + 100)
+(def x (send acnt))
+(def x (fn [field fun arg] (send acnt field fun arg)))
+(x [:balance] + 1)
+(defn y (fn [fun arg] (x [:balance])))
+(def y (fn [fun arg] (x [:balance])))
+y
+(y + 100)
+(def y (fn [fun arg] (x [:balance] fun arg)))
+(y + 100)
+(send acnt +)
+(do (send acnt update-in + 100) (await-for 10 acnt))
+(not (nil? 0))
