@@ -1,0 +1,6 @@
+(remove (range 2 10000) (iterate (partial + 2) 2))
+(doc remove)
+(remove #(zero? (mod % 2)) (range 2 25))
+(remove #(zero? (mod % 3)) (remove #(zero? (mod % 2)) (range 2 25)))
+(take 10 (iterate inc 2))
+(conj [2 3] 5)
