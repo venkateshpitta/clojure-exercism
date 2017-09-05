@@ -1,0 +1,34 @@
+(.split "Venkatesh Pitta" " ")
+(clojure/string.split "Venkatesh Pitta" " ")
+(def dna "GATTACA")
+dna
+(let [table {"G" "C", "C" "G", "T" "A", "A" "U"}]
+  (map (fn [c] (get table c)) dna))
+(let [table {"G" "C", "C" "G", "T" "A", "A" "U"}]
+  (map (fn [c] (get table c)) (char-array dna)))
+(char-array dna)
+(seq dna)
+(let [table {"G" "C", "C" "G", "T" "A", "A" "U"}]
+  (map (fn [c] (get table c)) (seq dna)))
+(let [table {G "C", C "G", T "A", A "U"}]
+  (map (fn [c] (get table c)) (seq dna)))
+(let [table {"G" "C", "C" "G", "T" "A", "A" "U"}]
+  (map (fn [c] (get table c)) (seq dna)))
+(let [table {:G "C", :C "G", :T "A", :A "U"}]
+  (map (fn [c] (get table c)) (seq dna)))
+(let [table {\G "C", \C "G", \T "A", \A "U"}]
+  (map (fn [c] (get table c)) (seq dna)))
+(let [table {\G "C", \C "G", \T "A", \A "U"}]
+  (str (map (fn [c] (get table c)) (seq dna))))
+dna
+(set dna)
+(eq #{\A \T \G \C} (set dna))
+(equal? #{\A \T \G \C} (set dna))
+(= #{\A \T \G \C} (set dna))
+(clojure.set/subset? #{\A \C \G\ \T} (set dna))
+(clojure.set/subset? #{\A \C \G\ \T} (set "REKLJDSHFKJH"))
+(clojure.set/subset? #{\A \C \G\ \T} (set "CCCCCCCCCCCCCCCDFAAAAAAGGGGGGZZZZZZZ"))
+(clojure.set/subset?  (set "CCCCCCCCCCCCCCCDFAAAAAAGGGGGGZZZZZZZ") #{\A \C \G\ \T})
+(set "Venkatesh Pitta")
+(set (seq "Venkatesh Pitta"))
+(doc clojure.set/subset?)
