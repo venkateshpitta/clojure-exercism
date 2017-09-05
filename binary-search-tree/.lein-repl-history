@@ -1,0 +1,13 @@
+(require 'binary-search-tree :as bst)
+(require 'binary-search-tree :as 'bst)
+(require 'binary-search-tree)
+(def t (binary-search-tree/singleton 4))
+t
+(t val)
+t.val
+(binary-search-tree/value t)
+(binary-search-tree/insert 2 t)
+(binary-search-tree/left t)
+(binary-search-tree/value (binary-search-tree/left t))
+(binary-search-tree/value t)
+(binary-search-tree/value (binary-search-tree/insert 2 (binary-search-tree/singleton 4)))
