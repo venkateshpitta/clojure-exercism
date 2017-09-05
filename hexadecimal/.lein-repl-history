@@ -1,0 +1,2 @@
+(clojure.string/lower-case "Venkatesh")
+(doc every?)
