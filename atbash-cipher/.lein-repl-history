@@ -1,0 +1,48 @@
+(clojure.string/replace "the quick brown fox jumped over the lazy brown dog.,  ;" #"[,.;\\s+]" "")
+(clojure.string/replace "the quick brown fox jumped over the lazy brown dog.,  ;" (re-pattern "[,.;\\s+]") "")
+(clojure.string/replace "the quick brown fox jumped over the lazy brown dog.,  ;" #("[,.;\\s+]") "")
+(clojure.string/replace "the quick brown fox jumped over the lazy brown dog.,  ;" (re-pattern "[,.;\\s+]") "")
+(doc split-at)
+(def table {"a" "z"
+               "b" "y"
+               "c" "x"
+               "d" "w"
+               "e" "v"
+               "f" "u"
+               "g" "t"
+               "h" "r"
+               "i" "s"
+               "j" "q"
+               "k" "p"
+               "l" "o"
+               "m" "n"
+               "n" "m"
+               "o" "l"
+               "p" "k"
+               "q" "j"
+               "r" "i"
+               "s" "h"
+               "t" "g"
+               "u" "f"
+               "v" "e"
+               "w" "d"
+               "x" "c"
+               "y" "b"
+               "z" "a"})
+table
+(table "a"0
+)
+(table "a")
+(def given "the quick brown fox jumps over the lazy dog")
+(clojure.string/replace given (re-pattern "[,.;\\s+]") "")
+(map #(table %) (clojure.string/replace given (re-pattern "[,.;\\s+]") ""))
+(map table (clojure.string/replace given (re-pattern "[,.;\\s+]") ""))
+(map table (seq (clojure.string/replace given (re-pattern "[,.;\\s+]") "")))
+(map (fn [x] (get table x)) (seq (clojure.string/replace given (re-pattern "[,.;\\s+]") "")))
+(seq (clojure.string/replace given (re-pattern "[,.;\\s+]") ""))
+(Character/isDigit \1)
+(Character/isDigit \s)
+(str "a" "b")
+(map str [("a" "b") ("c" "d")])
+(doc trim)
+(doc clojure.string/trim)
