@@ -1,0 +1,336 @@
+(doc ->)
+(list "Venkatesh")
+(cons "Venkatesh")
+(cons "" "Venkatesh")
+(cons [] "Venkatesh")
+(cons "Venkatesh" [])
+(conj "Venkatesh" [])
+(conj "Venkatesh" " ")
+(conj ["Venkatesh"] " ")
+(sort ["Pitta" "Amarnath"])
+(nil? nil)
+(nilp nil)
+(conj [] "Venkatesh")
+(conj [] "Venkatesh" [])
+(conj [] "Venkatesh" "Pitta")
+(def db {2 ["Venkatesh" "Pitta"]})
+db
+(db 2)
+(get db 3 nil)
+(get db 3)
+(get db 3 [])
+(doc set)
+(doc update)
+(update db 2 ["Venkatesh" "Pitta" "Amarnath"])
+(update db 2 conj ["Venkatesh" "Pitta" "Amarnath"])
+(def db {2 ["Venkatesh" "Pitta"]})
+(update db 2 conj "Amarnath")
+db
+(update db 3 conj "Amarnath")
+(update db 3 conj [] "Amarnath")
+(update db 3 conj "Amarnath")
+(update (update db 3 conj "Amarnath") 3 conj "Ramachary")
+(def db (update (update db 3 conj "Amarnath") 3 conj "Ramachary"))
+db
+(keys db)
+(sort (keys db) >)
+(sort (keys db) <)
+(sort (keys db))
+(doc sort)
+(sort > (keys db))
+(sort < (keys db))
+(doc type)
+(type ["Venkatesh" "Pitta"])
+(vector "Venkatesh" "Pitta")
+(vector-of ("Venkatesh" "Pitta" "Amarnath"))
+(vector-of '("Venkatesh" "Pitta" "Amarnath"))
+(vector-of 2 3)
+(vector "Venkatesh" "Pitta")
+(cons "Venkatesh" "Pitta")
+(conj "Venkatesh" "Pitta")
+(conj [] "Venkatesh" "Pitta")
+db
+(get db 2)
+(conj (get db 2) "Amarnath")
+(doc update )
+(id db)
+(update db conj 4 "Nithya" "Rangachari")
+(update db conj 4 [] "Nithya" "Rangachari")
+(update db conj 4 ["Nithya" "Rangachari"])
+(update db 4 conj "Nithya" "Rangachari")
+db
+(update db 4 conj "Nithya" "Rangachari" [])
+(update db 4 conj ["Nithya" "Rangachari"])
+(merge [4 3 2] (update db 4 conj ["Nithya" "Rangachari"]))
+(merge {\4 0 \3 0 \2 0} (update db 4 conj ["Nithya" "Rangachari"]))
+(merge {4 0 3 0 2 0} (update db 4 conj ["Nithya" "Rangachari"]))
+(merge [4 3 2] [0 0 0])
+(zip [4 3 2] [0 0 0])
+(cons [4 3 2] [0 0 0])
+(conj [4 3 2] [0 0 0])
+(hash-map [4 3 2] [0 0 0])
+(map (fn [x y] (hash-map x y)) [4 3 2] [5 6 7])
+(map (fn [x y] (:x y)) [4 3 2] [5 6 7])
+(map (fn [x y] (x :y)) [4 3 2] [5 6 7])
+(map (fn [x y] (x : y)) [4 3 2] [5 6 7])
+(map (fn [x y] (\x y)) [4 3 2] [5 6 7])
+(conj [] 3)
+(conj 3 [])
+(conj [] 3 4)
+(conj [] [1 2] [5 6])
+(flatten (conj [] [1 2] [5 6]))
+(vector (flatten (conj [] [1 2] [5 6])))
+(vector (conj [] [1 2] [5 6]))
+(flatten (vector (conj [] [1 2] [5 6])))
+(vector-of (flatten (vector (conj [] [1 2] [5 6]))))
+(vector (flatten (vector (conj [] [1 2] [5 6]))))
+(vector (flatten (conj [] [1 2] [5 6])))
+(flatten (conj [] [1 2] [5 6]))
+(conj [] [1 2] [5 6])
+(conj [1 2] [5 6])
+(flatten (conj [1 2] [5 6]))
+(doc flatten)
+(doc vector)
+(vector (conj [1 2] [5 6]))
+(flatten (vector (conj [1 2] [5 6])))
+(vector (flatten (conj [1 2] [5 6])))
+(concat [1 2 3] 4)
+(concat [1 2 3] [4])
+(into [] (concat [1 2 3] [4]))
+db
+(def asym-hobbit-body-parts [{:name "head" :size 3}
+                             {:name "left-eye" :size 1}
+                             {:name "left-ear" :size 1}
+                             {:name "mouth" :size 1}
+                             {:name "nose" :size 1}
+                             {:name "neck" :size 2}
+                             {:name "left-shoulder" :size 3}
+                             {:name "left-upper-arm" :size 3}
+                             {:name "chest" :size 10}
+                             {:name "back" :size 10}
+                             {:name "left-forearm" :size 3}
+                             {:name "abdomen" :size 6}
+                             {:name "left-kidney" :size 1}
+                             {:name "left-hand" :size 2}
+                             {:name "left-knee" :size 2}
+                             {:name "left-thigh" :size 4}
+                             {:name "left-lower-leg" :size 3}
+                             {:name "left-achilles" :size 1}
+                             {:name "left-foot" :size 2}])
+(defn matching-part
+  [part]
+  {:name (clojure.string/replace (:name part) #"^left-" "right-")
+   :size (:size part)})
+(defn symmetrize-body-parts
+  "Expects a seq of maps that have a :name and :size"
+  [asym-body-parts]
+  (loop [remaining-asym-parts asym-body-parts
+         final-body-parts []]
+    (if (empty? remaining-asym-parts)
+      final-body-parts
+      (let [[part & remaining] remaining-asym-parts]
+        (recur remaining
+               (into final-body-parts
+                     (set [part (matching-part part)])))))))
+(symmetrize-body-parts asym-hobbit-body-parts)
+; => [{:name "head", :size 3}
+      {:name "left-eye", :size 1}
+      {:name "right-eye", :size 1}
+      {:name "left-ear", :size 1}
+      {:name "right-ear", :size 1}
+      {:name "mouth", :size 1}
+      {:name "nose", :size 1}
+      {:name "neck", :size 2}
+      {:name "left-shoulder", :size 3}
+      {:name "right-shoulder", :size 3}
+      {:name "left-upper-arm", :size 3}
+      {:name "right-upper-arm", :size 3}
+      {:name "chest", :size 10}
+      {:name "back", :size 10}
+      {:name "left-forearm", :size 3}
+      {:name "right-forearm", :size 3}
+      {:name "abdomen", :size 6}
+      {:name "left-kidney", :size 1}
+      {:name "right-kidney", :size 1}
+      {:name "left-hand", :size 2}
+      {:name "right-hand", :size 2}
+      {:name "left-knee", :size 2}
+      {:name "right-knee", :size 2}
+      {:name "left-thigh", :size 4}
+      {:name "right-thigh", :size 4}
+      {:name "left-lower-leg", :size 3}
+      {:name "right-lower-leg", :size 3}
+      {:name "left-achilles", :size 1}
+      {:name "right-achilles", :size 1}
+      {:name "left-foot", :size 2}
+      {:name "right-foot", :size 2}]
+(symmetrize-body-parts asym-hobbit-body-parts)
+      [{:name "head", :size 3}
+      {:name "left-eye", :size 1}
+      {:name "right-eye", :size 1}
+      {:name "left-ear", :size 1}
+      {:name "right-ear", :size 1}
+      {:name "mouth", :size 1}
+      {:name "nose", :size 1}
+      {:name "neck", :size 2}
+      {:name "left-shoulder", :size 3}
+      {:name "right-shoulder", :size 3}
+      {:name "left-upper-arm", :size 3}
+      {:name "right-upper-arm", :size 3}
+      {:name "chest", :size 10}
+      {:name "back", :size 10}
+      {:name "left-forearm", :size 3}
+      {:name "right-forearm", :size 3}
+      {:name "abdomen", :size 6}
+      {:name "left-kidney", :size 1}
+      {:name "right-kidney", :size 1}
+      {:name "left-hand", :size 2}
+      {:name "right-hand", :size 2}
+      {:name "left-knee", :size 2}
+      {:name "right-knee", :size 2}
+      {:name "left-thigh", :size 4}
+      {:name "right-thigh", :size 4}
+      {:name "left-lower-leg", :size 3}
+      {:name "right-lower-leg", :size 3}
+      {:name "left-achilles", :size 1}
+      {:name "right-achilles", :size 1}
+      {:name "left-foot", :size 2}
+      {:name "right-foot", :size 2}]
+(let [x 3]
+  x)
+; => 3
+(def dalmatian-list
+  ["Pongo" "Perdita" "Puppy 1" "Puppy 2"])
+(let [dalmatians (take 2 dalmatian-list)]
+  dalmatians)
+; => ("Pongo" "Perdita")
+(def x 0)
+(let [x 1] x)
+; => 1
+(def x 0)
+(let [x (inc x)] x)
+; => 1
+(def x 0)
+(let [x (inc x)] x)
+; => 1
+(let [[pongo & dalmatians] dalmatian-list]
+  [pongo dalmatians])
+; => ["Pongo" ("Perdita" "Puppy 1" "Puppy 2")]
+(defn symmetrize-body-parts
+  "Expects a seq of maps that have a :name and :size"
+  [asym-body-parts]
+   (loop [remaining-asym-parts asym-body-parts 
+         final-body-parts []]
+     (if (empty? remaining-asym-parts) 
+      final-body-parts
+       (let [[part & remaining] remaining-asym-parts] 
+         (recur remaining 
+               (into final-body-parts
+                     (set [part (matching-part part)])))))))
+(defn better-symmetrize-body-parts
+  "Expects a seq of maps that have a :name and :size"
+  [asym-body-parts]
+  (reduce (fn [final-body-parts part]
+            (into final-body-parts (set [part (matching-part part)])))
+          []
+          asym-body-parts))
+(doc hit)
+(defn hit
+  [asym-body-parts]
+  (let [sym-parts (better-symmetrize-body-parts asym-body-parts)
+        body-part-size-sum (reduce + (map :size sym-parts))
+        target (rand body-part-size-sum)]
+    (loop [[part & remaining] sym-parts
+           accumulated-size (:size part)]
+      (if (> accumulated-size target)
+        part
+        (recur remaining (+ accumulated-size (:size (first remaining))))))))
+(hit asym-hobbit-body-parts)
+; => {:name "right-upper-arm", :size 3}
+(hit asym-hobbit-body-parts)
+; => {:name "chest", :size 10}
+(hit asym-hobbit-body-parts)
+; => {:name "left-eye", :size 1}
+(defn mapset [fun array]
+(into #{} (map fun array)))
+(mapset inc [1 2 3 4])
+(mapset inc [1 2 3 4 1 2 3 4])
+(into [] (\a \b \c))
+(into [] {\a \b \c})
+(into [] (seq {\a \b \c}))
+(into [] (seq {"a" "b" "c"}))
+(into [] (seq ("a" "b" "c")))
+(seq "A" "B" "C")
+(seq ["A" "B" "C"])
+(into [] (seq ["A" "B" "C"]))
+(def human-consumption   [8.1 7.3 6.6 5.0])
+(def critter-consumption [0.0 0.2 0.3 1.1])
+(defn unify-diet-data
+  [human critter]
+  {:human human
+   :critter critter})
+(map unify-diet-data human-consumption critter-consumption)
+; => ({:human 8.1, :critter 0.0}
+      {:human 7.3, :critter 0.2}
+      {:human 6.6, :critter 0.3}
+      {:human 5.0, :critter 1.1})
+(def human-consumption   [8.1 7.3 6.6 5.0])
+(def critter-consumption [0.0 0.2 0.3 1.1])
+(defn unify-diet-data
+  [human critter]
+  {:human human
+   :critter critter})
+(map unify-diet-data human-consumption critter-consumption)
+; => ({:human 8.1, :critter 0.0}
+;      {:human 7.3, :critter 0.2}
+;      {:human 6.6, :critter 0.3}
+;      {:human 5.0, :critter 1.1})
+(doc filter)
+(doc some)
+(doc all)
+(doc any)
+(sort "AAA" "CC" "B")
+(sort ["AAA" "CC" "B"])
+(sort-by count ["AAA" "CC" "B"])
+(def vampire-database
+  {0 {:makes-blood-puns? false, :has-pulse? true  :name "McFishwich"}
+   1 {:makes-blood-puns? false, :has-pulse? true  :name "McMackson"}
+   2 {:makes-blood-puns? true,  :has-pulse? false :name "Damon Salvatore"}
+   3 {:makes-blood-puns? true,  :has-pulse? true  :name "Mickey Mouse"}})
+(defn vampire-related-details
+  [social-security-number]
+  (Thread/sleep 1000)
+  (get vampire-database social-security-number))
+(defn vampire?
+  [record]
+  (and (:makes-blood-puns? record)
+       (not (:has-pulse? record))
+       record))
+(defn identify-vampire
+  [social-security-numbers]
+  (first (filter vampire?
+                 (map vampire-related-details social-security-numbers))))
+(time (vampire-related-details 0))
+; => "Elapsed time: 1001.042 msecs"
+; => {:name "McFishwich", :makes-blood-puns? false, :has-pulse? true}
+(time (def mapped-details (map vampire-related-details (range 0 1000000))))
+; => "Elapsed time: 0.049 msecs"
+; => #'user/mapped-details
+(time (first mapped-details))
+; => "Elapsed time: 32030.767 msecs"
+; => {:name "McFishwich", :makes-blood-puns? false, :has-pulse? true}
+(time (first mapped-details))
+(time (identify-vampire (range 0 1000000)))
+(take 3 (repeatedly (fn [] (rand-int 10))))
+; => (1 4 0)
+(take 3 (repeatedly (fn [] (rand-int 10))))
+(defn even-numbers
+  ([] (even-numbers 0))
+  ([n] (cons n (lazy-seq (even-numbers (+ n 2))))))
+(take 10 (even-numbers))
+; => (0 2 4 6 8 10 12 14 16 18)
+(doc sorted-map)
+(doc zip)
+(doc zipmap)
+(doc sorted-map-by)
+(doc sorted-map)
