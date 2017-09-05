@@ -1,0 +1,8 @@
+(require 'luhn)
+(luhn/checksum 10)
+(map #(Character/digit % 10) 10)
+(map #(Character/digit % 10) (str 1111))
+(map * (reverse (map #(Character/digit % 10) (str 1111))) (cycle [1 2]))
+(map #(+ (quot % 10) (mod % 10)) (map * (reverse (map #(Character/digit % 10) (str 1111))) (cycle [1 2])))
+(reduce + 0 (map #(+ (quot % 10) (mod % 10)) (map * (reverse (map #(Character/digit % 10) (str 1111))) (cycle [1 2]))))
+(mod (* 9 (reduce + 0 (map #(+ (quot % 10) (mod % 10)) (map * (reverse (map #(Character/digit % 10) (str 1111))) (cycle [1 2]))))) 10)
