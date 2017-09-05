@@ -1,0 +1,13 @@
+(def given "listen")
+(def candidates ["enlists", "google", "inlets", "banana"])
+candidates
+(clojure.string/sort given)
+(sort given)
+(filter (fn [x] (= (sort given) (sort x))) candidates)
+(seq (filter (fn [x] (= (sort given) (sort x))) candidates))
+(list (filter (fn [x] (= (sort given) (sort x))) candidates))
+(filter (fn [x] (= (sort given) (sort x))) candidates)
+(clojure.string/lower-case given)
+(clojure.string/upper-case given)
+(sort (clojure.string/upper-case given))
+(filter (fn [x] (= (sort (clojure.string/upper-case given)) (sort (clojure.string/upper-case x)))) candidates)
