@@ -1,0 +1,6 @@
+(reverse "VENKATESH")
+(str (reverse "VENKATESH"))
+(apply str (reverse "VENKATESH"))
+(first (reverse "VENKATESH"))
+(require 'clojure.math.numeric-tower)
+(clojure.math.numeric-tower/expt 2 10)
