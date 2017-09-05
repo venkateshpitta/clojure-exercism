@@ -1,0 +1,15 @@
+(count "A" "AGTCCA")
+(frequencies "AGTCCA")
+{\A ((frequencies "AGTCCA") "A")
+)
+{\A ((frequencies "AGTCCA") "A")}
+{\A ((frequencies "AGTCCA") \A)}
+(contains? "Venkatesh" "V")
+(.contains "Venkatesh" "V")
+(str \T)
+(def dna "AGTCGGAATT")
+dna
+{\A ((frequencies dna) \A, \C ((frequencies dna) \C}
+{\A ((frequencies dna) \A, \C ((frequencies dna) \C)}
+{\A ((frequencies dna) \A), \C ((frequencies dna) \C)}
+(doc merge)
