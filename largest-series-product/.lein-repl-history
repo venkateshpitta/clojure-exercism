@@ -1,0 +1,80 @@
+(map int "29")
+(map Integer/parseInt "29")
+(Integer/parseInt "29")
+(map #(Integer/parseInt %) "29")
+(map #(Integer/parseInt %) (map str "29"))
+(reduce * 1 (map #(Integer/parseInt %) (map str "29")))
+(def digits "7316717653133062491922511967442657474235534919493496983520312774506326239578318016984801869478851843858615607891129494954595017379583319528532088055111254069874715852386305071569329096329522744304355766896648950445244523161731856403098711121722383113622298934233803081353362766142828064444866452387493035890729629049156044077239071381051585930796086670172427121883998797908792274921901699720888093776657273330010533678812202354218097512545405947522435258490771167055601360483958644670632441572215539753697817977846174064955149290862569321978468622482839722413756570560574902614079729686524145351004748216637048440319989000889524345065854122758866688116427171479924442928230863465674813919123162824586178664583591245665294765456828489128831426076900422421902267105562632111110937054421750694165896040807198403850962455444362981230987879927244284909188845801561660979191338754992005240636899125607176060588611646710940507754100225698315520005593572972571636269561882670428252483600823257530420752963450")
+(drop 0 digits)
+(take 13 (drop 0 digits))
+(take 14 (drop 1 digits))
+(take 13 (drop 1 digits))
+(range 10 1 -1)
+(map #(take 13 (drop % digits)) (range (count digits) 12 -1))
+(map #(reduce + 0 %) (map #(take 13 (drop % digits)) (range (count digits) 12 -1)))
+(map #(Integer/parseInt %) (map #(take 13 (drop % digits)) (range (count digits) 12 -1)))
+(map #(take 13 (drop % digits)) (range (count digits) 12 -1))
+(defn segments [len digits]
+  (map #(take len (drop % digits)) (range (count digits) (dec len) -1)))
+(defn segment-sum [seg]
+  (reduce + 0 (map #(Integer/parseInt %) seg)))
+(map segment-sum (segments 13 digits))
+(map #(segment-sum %) (segments 13 digits))
+(map #(take 13 (drop % digits)) (range (count digits) 12 -1))
+(map #(segment-sum %) (map #(take 13 (drop % digits)) (range (count digits) 12 -1)))
+(map #(segment-sum %) (segments 13 digits))
+(defn segment-sum [seg]
+  (reduce + 0 (map #(Integer/parseInt %) (map str seg))))
+(map #(segment-sum %) (segments 13 digits))
+(map #(segment-sum %) (segments 2 "29"))
+(defn segment-product [seg]
+  (reduce * 0 (map #(Integer/parseInt %) (map str seg))))
+(map #(segment-product %) (segments 2 "29"))
+(map #(segment-product %) (segments 13 digits))
+(segments 13 digits)
+(defn segments [len digits]
+  (map #(take len (drop % digits)) (range 0 (- (count digits) len))))
+(segments 13 digits)
+(defn segments [len digits]
+  (map #(take len (drop % digits)) (range 0 (- (count digits) (inc len)))))
+(segments 13 digits)
+(defn segments [len digits]
+  (map #(take len (drop % digits)) (range 0 (- (count digits) (dec len)))))
+(segments 13 digits)
+(map #(segment-product %) (segments 13 digits))
+(map (take len #(drop % digits) (range 0 (- (count digits) (dec len)))))
+(map (take 13 #(drop % digits) (range 0 (- (count digits) (dec 13)))))
+(map #(take 13 (drop % digits)) (range 0 (- (count digits) (dec 13))))
+(Character/getNumericValue \5)
+(map #(take len (drop % digits)) (range 0 (- (count digits) (dec len))))
+(map #(take 13 (drop % digits)) (range 0 (- (count digits) (dec 13))))
+(def segs (map #(take 13 (drop % digits)) (range 0 (- (count digits) (dec 13)))))
+(map #(map #(Character/getNumericValue %) %) segs)
+segs
+(defn seg-product [seg]
+)
+(defn segments [len digits]
+  (map #(take len (drop % digits)) (range 0 (- (count digits) (dec len)))))
+(defn segment-product [seg]
+  (reduce * 1 (map #(Integer/parseInt %) (map str seg))))
+(map segment-product (segments 13 digits))
+(defn segments [len digits]
+  (map #(take len (drop % digits)) (range 0 (- (count digits) (dec len)))))
+(defn segment-product [seg]
+  (reduce * 1 (map #(Integer/parseInt %) (map str seg))))
+(defn largest-product [len digits]
+  (max (map segment-product (segments len digits))))
+(largest-product 13 digits)
+(max (largest-product 13 digits))
+(apply max (largest-product 13 digits))
+(defn segments [len digits]
+  (map #(take len (drop % digits)) (range 0 (- (count digits) (dec len)))))
+(defn segment-product [seg]
+  (reduce * 1 (map #(Integer/parseInt %) (map str seg))))
+(defn largest-product [len digits]
+  (apply max (map segment-product (segments len digits))))
+(apply max (largest-product 13 digits))
+(max (largest-product 13 digits))
+(largest-product 13 digits)
+(range 0 9)
+(count "")
