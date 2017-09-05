@@ -1,0 +1,10 @@
+(def l1 [1 2 3 4 5 6])
+(def l2 [1 2 3 4 5 6 7 8 9])
+(drop-while (fn [x] (not= x (first l2))) l1)
+(drop-while (fn [x] (not= x (first l1))) l2)
+(eq [1 2 3] [1 2 3])
+(= [1 2 3] [1 2 3])
+(clojure.string/join "_" ["aierfj;a" "aoieruf " " lksuidogfaeuvo9u  - "]
+)
+(clojure.string/includes? "asdfasdfasdf" "fasd")
+(clojure.string/includes? "asd" "asdfasdfasdf")
