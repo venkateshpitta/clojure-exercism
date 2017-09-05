@@ -1,0 +1,5 @@
+(string/lower-case "VENKATESH")
+(.string/lower-case "VENKATESH")
+(java/string/lower-case "VENKATESH")
+(ns string)
+(string/lower-case "VENKATESH")
