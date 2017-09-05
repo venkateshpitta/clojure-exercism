@@ -1,0 +1,13 @@
+(flatten [1,[2,3,null,4],[null],5]
+)
+(flatten [1,[2,3,nil,4],[nil],5])
+(remove nil? (flatten [1,[2,3,nil,4],[nil],5]))
+(into [] (remove nil? (flatten [1,[2,3,nil,4],[nil],5])))
+(doc flatten)
+(conj [] 1)
+(conj 1 [])
+(conj [] [1] [2])
+(concat [] [1] [2])
+(rest [])
+(empty? [])
+(concat [] nil [2 3 4 5 [4 5 6 7]])
