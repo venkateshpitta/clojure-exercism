@@ -1,0 +1,42 @@
+(set "AAAWWWSSSDDDSSS")
+(doc any)
+(doc some)
+(doc some?)
+(int \2)
+(ints \2)
+(doc int)
+(integer? "123")
+(Integer/parseInt "1234" 3)
+(Integer/parseInt "12" 3)
+(number? "1234")
+(number? (seq "1234"))
+(type (first (seq "1234")))
+(doc num)
+(num "1234")
+(drop-while Character/isDigit (seq "1234"))
+(drop-while #(Character/isDigit %) (seq "1234"))
+(empty? (drop-while #(Character/isDigit %) (seq "1234")))
+  (defn helper [given pos acc]
+    (if (> given 0)
+      (recur (quot given 10) (inc pos) (+ acc
+                                          (* (mod
+                                              given
+                                              10)
+                                             (clojure.math.numeric-tower/expt
+                                              3 pos))))
+      acc))
+(require 'clojure.math.numeric-tower)
+  (defn helper [given pos acc]
+    (if (> given 0)
+      (recur (quot given 10) (inc pos) (+ acc
+                                          (* (mod
+                                              given
+                                              10)
+                                             (clojure.math.numeric-tower/expt
+                                              3 pos))))
+      acc))
+(if (empty? (drop-while #(Character/isDigit %) (seq "123456")))
+0
+(helper (Integer/parseInt "123456" 10) 0 0))
+(helper (Integer/parseInt "123456") 0 0))
+(drop-while #(Character/isDigit %) "1234")
