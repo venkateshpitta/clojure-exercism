@@ -1,0 +1,4 @@
+(println (str "Hello " "World!"))
+(print (str "Hello " "World!"))
+(print "Hello " "World!")
+(println "Hello " "World!")
