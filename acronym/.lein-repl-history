@@ -1,0 +1,21 @@
+(clojure.string/split "Portable Network Graphics")
+(clojure.string/split "Portable Network Graphics" " ")
+(clojure.string/split "Portable Network Graphics" #" ")
+(map first (clojure.string/split "Portable Network Graphics" #" "))
+(apply str (map first (clojure.string/split "Portable Network Graphics" #" ")))
+(apply str (map first (clojure.string/split "Complementary metal-oxide semiconductor" #" ")))
+(apply str (map first (clojure.string/split "Complementary metal-oxide semiconductor" #"-| ")))
+(clojure.string/upper-case (apply str (map first (clojure.string/split "Complementary metal-oxide semiconductor" #"-| "))))
+(-> "complementary metal-oxide semiconductor"
+    (clojure.string/split #"-| "))
+;    (clojure.string/split #"-| "))
+(-> "complementary metal-oxide semiconductor"
+    (clojure.string/split #"-| ")
+    (map first))
+(-> "complementary metal-oxide semiconductor"
+    (clojure.string/split #"-| ")
+    ((map first)))
+(-> "complementary metal-oxide semiconductor"
+    (clojure.string/split #"-| ")
+    ((map first))
+    ((apply str)))
