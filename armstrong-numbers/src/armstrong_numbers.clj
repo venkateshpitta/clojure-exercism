@@ -4,7 +4,7 @@
 (defn armstrong? [n]
   (defn to-digits [given]
     (loop [num given
-           acc []]
+           acc '()]
       (if (zero? num) acc
           (recur (quot num 10) (conj acc (mod num 10))))))
   (let [ds (to-digits n)
