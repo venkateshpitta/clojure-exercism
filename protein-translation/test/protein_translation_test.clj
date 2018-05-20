@@ -26,11 +26,11 @@
 (deftest identifies-stop-codons
   (are [codon] (= "STOP" (protein-translation/translate-codon codon)) "UAA" "UAG" "UGA"))
 
-(deftest translates-rna-strand-into-correct-protein
-  (is (= ["Methionine" "Phenylalanine" "Tryptophan"] (protein-translation/translate-rna "AUGUUUUGG"))))
+;; (deftest translates-rna-strand-into-correct-protein
+;;   (is (= ["Methionine" "Phenylalanine" "Tryptophan"] (protein-translation/translate-rna "AUGUUUUGG"))))
 
-(deftest stops-translation-if-stop-codon-present
-  (is (= ["Methionine" "Phenylalanine"] (protein-translation/translate-rna "AUGUUUUAA"))))
+;; (deftest stops-translation-if-stop-codon-present
+;;   (is (= ["Methionine" "Phenylalanine"] (protein-translation/translate-rna "AUGUUUUAA"))))
 
-(deftest stops-translation-of-longer-strand
-  (is (= ["Tryptophan" "Cysteine" "Tyrosine"] (protein-translation/translate-rna "UGGUGUUAUUAAUGGUUU"))))
+;; (deftest stops-translation-of-longer-strand
+;;   (is (= ["Tryptophan" "Cysteine" "Tyrosine"] (protein-translation/translate-rna "UGGUGUUAUUAAUGGUUU"))))
