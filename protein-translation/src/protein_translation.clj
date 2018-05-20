@@ -15,7 +15,7 @@
   (loop [running rna
          acc []]
     (if (or (empty? running)
-            (contains? ["UAA" "UAG" "UGA"] (apply str (take 3 running))))
+            (= "STOP" (translate-codon (apply str (take 3 running)))))
       acc
       (recur (apply str (drop 3 running))
              (conj acc (translate-codon (apply str (take 3 running))))))))
