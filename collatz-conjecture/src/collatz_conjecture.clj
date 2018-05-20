@@ -6,7 +6,8 @@
       (throw (IllegalArgumentException. "IllegalArgumentException"))
       (if (= m 1)
         ret
-        (if (even? m)
-          (helper (/ m 2) (inc ret))
-          (helper (+ (* 3 m) 1) (inc ret))))))
+        (helper (if (even? m)
+                  (/ m 2)
+                  (+ (* 3 m) 1))
+                (inc ret)))))
   (helper n 0))
