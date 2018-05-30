@@ -9,7 +9,6 @@
       (recur (rest tiles) (conj acc [(last (first tiles)) (first (second tiles))])))))
 
 (defn is-chain? [potential]
-  ;; (println "potential = " potential)
   (let [pairs (conj (fetch-pairs-to-verify potential)
                     [(first (first potential)) (last (last potential))])]
     (if (= 2 (count potential))
@@ -26,7 +25,6 @@
                        acc
                        (recur (rest run) (conj acc (first run)))))
           potentials (clojure.math.combinatorics/combinations complete (count dominos))]
-      ;; (println "all potentials = " potentials "\nall potentials count = " (count potentials))
       (loop [run potentials]
         (cond
           (empty? run) false
